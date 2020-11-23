@@ -1,0 +1,51 @@
+
+git add .
+git commit -m 'update'
+git push -u origin master
+
+
+qrsh -l mem_free=50G,h_vmem=50G,h_stack=256M
+
+cd /users/mkaras/_PROJECTS/gripeer-numerical-experiments
+git pull
+
+rm /users/mkaras/_PROJECTS/gripeer-numerical-experiments/results/dir_results_scenario_1c/core.*
+
+
+#1
+
+cd /users/mkaras/_PROJECTS/gripeer-numerical-experiments/bash_scripts/dir_run_scenario_1_n200_p528
+
+qsub -cwd -l mem_free=50G,h_vmem=50G,h_stack=256M -N SC1_n200_TEST -t 1-33 run_scenario_1_n200_p528
+
+
+
+#2
+
+cd /users/mkaras/_PROJECTS/gripeer-numerical-experiments/bash_scripts/dir_run_scenario_1_n400_p528
+
+qsub -cwd -l mem_free=50G,h_vmem=50G,h_stack=256M -N SC1_n400_TEST -t 1-33 run_scenario_1_n400_p528
+
+
+
+# LOOK UP
+
+cd /users/mkaras/_PROJECTS/gripeer-numerical-experiments/bash_scripts/dir_run_scenario_1_n200_p528
+ls -l
+
+
+cd /users/mkaras/_PROJECTS/gripeer-numerical-experiments/bash_scripts/dir_run_scenario_1_n400_p528
+ls -l
+
+
+# zip the results on the cluster 
+cd /users/mkaras/_PROJECTS/gripeer-numerical-experiments/results
+zip -r Z_dir_results_scenario_1c.zip dir_results_scenario_1c
+
+# copy the results from cluster to local
+clusterget 
+get /users/mkaras/_PROJECTS/gripeer-numerical-experiments/results/Z_dir_results_scenario_1c.zip /Users/martakaras/Downloads/Z_dir_results_scenario_1c.zip
+
+
+
+

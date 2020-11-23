@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+.DS_Store
+.Rhistory
+README.html
+gripeer-numerical-experiments.Rproj
+.gripeer-numerical-experiments.Rproj
+cluster_utils/cluster_execution_note.txt
+results/dir_results_scenario_1c/*
+results/dir_results_scenario_1a.txt
+results/dir_results_scenario_1b.txt
+results/dir_results_scenario_1c.txt
+MATLAB/penalized/*
